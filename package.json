@@ -1,0 +1,36 @@
+{
+  "name": "@ciffi-js/tester",
+  "version": "1.0.0",
+  "description": "Node utilities for testing",
+  "bin": {
+    "tester-init": "init.js",
+    "tester-generate": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node init.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciffi/tester.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ciffi/tester/issues"
+  },
+  "homepage": "https://github.com/ciffi/tester#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "20.0.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
+    "@cucumber/cucumber": "10.3.2",
+    "cypress": "13.7.1",
+    "dotenv": "16.4.5",
+    "typescript": "5.4.3"
+  }
+}
+
