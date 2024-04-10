@@ -51,7 +51,7 @@ const requestOptions = {
 };
 
 fetch(
-  `${TESTER_JIRA_URL}/rest/api/latest/issue/${fueaturID}?fields=summary,description`,
+  `${TESTER_JIRA_URL}/rest/api/latest/issue/${fueaturID}?fields=summary,customfield_10534`,
   requestOptions
 )
   .then((response) => response.json())
