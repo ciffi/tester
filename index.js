@@ -30,7 +30,12 @@ if (fs.existsSync(featureFile) && !fs.existsSync(stepFile)) {
   return;
 }
 
-const { TESTER_JIRA_EMAIL, TESTER_JIRA_TOKEN, TESTER_JIRA_URL } = process.env;
+const {
+  TESTER_JIRA_EMAIL,
+  TESTER_JIRA_TOKEN,
+  TESTER_JIRA_URL,
+  TESTER_JIRA_FIELD,
+} = process.env;
 
 if (!TESTER_JIRA_EMAIL || !TESTER_JIRA_TOKEN || !TESTER_JIRA_URL) {
   console.log(
@@ -51,7 +56,7 @@ const requestOptions = {
 };
 
 fetch(
-  `${TESTER_JIRA_URL}/rest/api/latest/issue/${fueaturID}?fields=summary,customfield_10534`,
+  `${TESTER_JIRA_URL}/rest/api/latest/issue/${fueaturID}?fields=summary,${TESTER_JIRA_FIELD}`,
   requestOptions
 )
   .then((response) => response.json())

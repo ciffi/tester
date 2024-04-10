@@ -13,11 +13,13 @@ yarn add --dev @ciffi-js/tester
 ## configure env variables
 
 _You can use .env file_
+
 _TESTER_BASE_URL is required_
 
 - TESTER_JIRA_EMAIL
 - TESTER_JIRA_TOKEN
 - TESTER_JIRA_URL
+- TESTER_JIRA_FIELD
 - TESTER_BASE_URL
 
 ## generate features and steps
