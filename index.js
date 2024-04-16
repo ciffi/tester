@@ -35,9 +35,15 @@ const {
   TESTER_JIRA_TOKEN,
   TESTER_JIRA_URL,
   TESTER_JIRA_FIELD,
+  TESTER_LANG = "en",
 } = process.env;
 
-if (!TESTER_JIRA_EMAIL || !TESTER_JIRA_TOKEN || !TESTER_JIRA_URL) {
+if (
+  !TESTER_JIRA_EMAIL ||
+  !TESTER_JIRA_TOKEN ||
+  !TESTER_JIRA_URL ||
+  !TESTER_JIRA_FIELD
+) {
   console.log(
     "Please provide TESTER_JIRA_EMAIL, TESTER_JIRA_TOKEN, and TESTER_JIRA_URL"
   );
@@ -63,7 +69,7 @@ fetch(
   .then((result) => ({
     id: result.key,
     summary: result.fields.summary,
-    description: result.fields.description,
+    scenario: result.fields[TESTER_JIRA_FIELD],
   }))
   .then(writeFeatureFile)
   .catch((error) => console.log("error", error));
@@ -94,15 +100,20 @@ function useCucumber() {
   });
 }
 function writeFeatureFile(feature) {
+  const lang = TESTER_LANG !== "en" ? `# language: ${TESTER_LANG}\n` : "";
   const featureStringTitle = `Feature: ${feature.summary}\n`;
-  const featureScenario = `${feature.description}\n`;
+  const featureScenario = `${feature.scenario}\n`;
   if (!fs.existsSync(cypressPath)) {
     fs.mkdirSync(cypressPath);
   }
   if (!fs.existsSync(featuresPath)) {
     fs.mkdirSync(featuresPath);
   }
-  fs.writeFileSync(featureFile, featureStringTitle + featureScenario, "utf8");
+  fs.writeFileSync(
+    featureFile,
+    lang + featureStringTitle + featureScenario,
+    "utf8"
+  );
   useCucumber();
 }
 

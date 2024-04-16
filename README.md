@@ -21,6 +21,7 @@ _TESTER_BASE_URL is required_
 - TESTER_JIRA_URL
 - TESTER_JIRA_FIELD
 - TESTER_BASE_URL
+- TESTER_LANG
 
 ## generate features and steps
 
