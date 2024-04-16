@@ -101,7 +101,9 @@ function useCucumber() {
 }
 function writeFeatureFile(feature) {
   const lang = TESTER_LANG !== "en" ? `# language: ${TESTER_LANG}\n` : "";
-  const featureStringTitle = `Feature: ${feature.summary}\n`;
+  const featureTranslation =
+    TESTER_LANG === "it" ? "Funzionalità:" : "Feature:";
+  const featureStringTitle = `${featureTranslation} ${feature.summary}\n`;
   const featureScenario = `${feature.scenario}\n`;
   if (!fs.existsSync(cypressPath)) {
     fs.mkdirSync(cypressPath);
